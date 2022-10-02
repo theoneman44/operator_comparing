@@ -1,5 +1,4 @@
 import csv
-
 from db import db_session
 from model import Tarif
 
