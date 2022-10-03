@@ -6,3 +6,4 @@ input_data.csv
 *.xls
 *.xlsx
 data/
+config.py
