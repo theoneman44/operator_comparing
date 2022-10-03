@@ -1,6 +1,9 @@
 import csv
-from db import db_session
+import pandas as pd
+
+from db import db_session, engine
 from model import Tarif
+from config import XLSX
 
 
 def read_csv(filename):
@@ -25,6 +28,28 @@ def read_csv(filename):
         save_tarif_data(tarif_data)
 
 
+def excel(filename):
+    # Читаем файл в переменную. Тип данных DataFrame.
+    reader = pd.read_excel(filename)
+    # Указываем значения полей
+    fields = ['mobile_operator_name',
+              'tarif_name',
+              'package_offer',
+              'tarif_change',
+              'price',
+              'phone_internet',
+              'phone_minutes',
+              'phone_sms',
+              'social_offer',
+              'music_offer',
+              'video_offer',
+              'stream_offer',
+              'ext_information']
+    data = pd.DataFrame(reader, columns=fields)
+    data.to_sql("data", engine)
+    # Пока не работает
+
+
 def save_tarif_data(data):
     db_session.bulk_insert_mappings(Tarif, data)
     db_session.commit()
@@ -32,3 +57,4 @@ def save_tarif_data(data):
 
 if __name__ == '__main__':
     read_csv('input_data_from.csv')
+    # excel(XLSX)
