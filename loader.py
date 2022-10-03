@@ -18,7 +18,7 @@ def read_csv(filename):
                   'video_offer',
                   'stream_offer',
                   'ext_information']
-        reader = csv.DictReader(f, fields, delimiter=';')
+        reader = csv.DictReader(f, fields, delimiter=',')
         tarif_data = []
         for row in reader:
             tarif_data.append(row)
@@ -31,4 +31,4 @@ def save_tarif_data(data):
 
 
 if __name__ == '__main__':
-    read_csv('input_data1.csv')
+    read_csv('input_data_from.csv')
