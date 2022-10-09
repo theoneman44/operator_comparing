@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Boolean
 from db import Base, engine
 
 
@@ -8,16 +8,17 @@ class Tarif(Base):
     id = Column(Integer, primary_key=True)
     mobile_operator_name = Column(String)
     tarif_name = Column(String)
-    package_offer = Column(String)
-    tarif_change = Column(String)
-    price = Column(String)
-    phone_internet = Column(String)
-    phone_minutes = Column(String)
-    phone_sms = Column(String)
-    social_offer = Column(String)
-    music_offer = Column(String)
-    video_offer = Column(String)
-    stream_offer = Column(String)
+    price = Column(Integer)
+    phone_internet_quantity = Column(Integer)
+    unlim_phone_internet = Column(Boolean)
+    phone_minutes_quantity = Column(Integer)
+    unlim_phone_minutes = Column(Boolean)
+    phone_sms_quantity = Column(Integer)
+    social_offer_price = Column(Integer)
+    messenger_price = Column(Integer)
+    music_offer_price = Column(Integer)
+    video_offer_price = Column(Integer)
+    stream_offer_price = Column(Integer)
     ext_information = Column(String)
 
     def __repr__(self):

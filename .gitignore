@@ -7,3 +7,4 @@ input_data.csv
 *.xlsx
 data/
 config.py
+readme.txt
