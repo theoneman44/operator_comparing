@@ -1,9 +1,6 @@
 import csv
-# import pandas as pd
 
-# from db import db_session
-# from webapp.model import Tarif
-# from config import XLSX
+from webapp.model import Tarif, db
 
 
 # читаем csv файл и на выходе получаем словарь с нужными полями
@@ -25,7 +22,7 @@ def read_csv(filename):
                   'stream_offer_price',
                   'ext_information']
         reader = csv.DictReader(f, fields, delimiter=',', )
-        tarif_data = []
+        # tarif_data = []
         for row in reader:
             row['unlim_phone_internet'] = bool(row['unlim_phone_internet'])
             row['unlim_phone_minutes'] = bool(row['unlim_phone_minutes'])
@@ -38,40 +35,25 @@ def read_csv(filename):
             row['music_offer_price'] = int(row['music_offer_price'])
             row['video_offer_price'] = int(row['video_offer_price'])
             row['stream_offer_price'] = int(row['stream_offer_price'])
-            tarif_data.append(row)
-        return tarif_data
-        # save_tarif_data(tarif_data)
+            # tarif_data.append(row)
+            save_tarif_data(row)
 
 
-'''
-def excel(filename):
-    # Читаем файл в переменную. Тип данных DataFrame.
-    reader = pd.read_excel(filename)
-    # Указываем значения полей
-    fields = ['mobile_operator_name',
-              'tarif_name',
-              'package_offer',
-              'tarif_change',
-              'price',
-              'phone_internet',
-              'phone_minutes',
-              'phone_sms',
-              'social_offer',
-              'music_offer',
-              'video_offer',
-              'stream_offer',
-              'ext_information']
-    data = pd.DataFrame(reader, columns=fields)
-    data.to_sql("data", engine)
-    # Пока не работает
-
-
-# загружаем полученный словарь в БД
 def save_tarif_data(data):
-    db_session.bulk_insert_mappings(Tarif, data)
-    db_session.commit()
-'''
-
-if __name__ == '__main__':
-    read_csv('input_data_from.csv')
-    # excel(XLSX)
+    new_tarif = Tarif(mobile_operator_name=data['mobile_operator_name'],
+                      tarif_name=data['tarif_name'],
+                      price=data['price'],
+                      phone_internet_quantity=data['phone_internet_quantity'],
+                      unlim_phone_internet=data['unlim_phone_internet'],
+                      phone_minutes_quantity=data['phone_minutes_quantity'],
+                      unlim_phone_minutes=data['unlim_phone_minutes'],
+                      phone_sms_quantity=data['phone_sms_quantity'],
+                      social_offer_price=data['social_offer_price'],
+                      messenger_price=data['messenger_price'],
+                      music_offer_price=data['music_offer_price'],
+                      video_offer_price=data['video_offer_price'],
+                      stream_offer_price=data['stream_offer_price'],
+                      ext_information=data['ext_information']
+                      )
+    db.session.add(new_tarif)
+    db.session.commit()
