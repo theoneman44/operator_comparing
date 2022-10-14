@@ -55,5 +55,8 @@ def save_tarif_data(data):
                       stream_offer_price=data['stream_offer_price'],
                       ext_information=data['ext_information']
                       )
-    db.session.add(new_tarif)
-    db.session.commit()
+    try:
+        db.session.add(new_tarif)
+        db.session.commit()
+    finally:
+        db.session.close()
