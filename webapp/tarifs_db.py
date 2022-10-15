@@ -1,10 +1,10 @@
 import csv
 
-from webapp.model import Tarif, db
+from model import Tarif, db
 
 
 # читаем csv файл и на выходе получаем словарь с нужными полями
-def read_csv(filename):
+def read_csv_tarif(filename):
     with open(filename, 'r', encoding='utf-8') as f:
         fields = ['order',
                   'mobile_operator_name',
