@@ -11,42 +11,43 @@
     <title>{{ page_title }}</title>
   </head>
   <body>
-    <h4>{{ page_title }}</h4> 
-    {% for tarif in tarifs_list %}
-      <div class="container">
-        <div class="row">
-          <div>
-            <div class="col-9">
-              <h5>{{ tarif.mobile_operator_name }}</h5>
-              <h6>Тариф: {{ tarif.tarif_name }} - Абонентская плата: {{ tarif.price }}руб.</h6>
-              <p>{{ tarif.phone_internet_quantity }}Гб, {{ tarif.phone_minutes_quantity }}минут,  {{ tarif.phone_sms_quantity }}SMS.</p>
-              {% if tarif.social_offer_price >= 0 %}
-              <p>Социальные сети: {{ tarif.social_offer_price }} руб.</p>
-              {% endif %}
-              {% if tarif.messenger_price >= 0 %}
-              <p>Мессенджеры: {{ tarif.messenger_price }} руб.</p>
-              {% endif %}
-              {% if tarif.music_offer_price >= 0 %}
-              <p>Музыка: {{ tarif.music_offer_price }} руб.</p>
-              {% endif %}
-              {% if tarif.video_offer_price >= 0 %}
-              <p>Видео: {{ tarif.video_offer_price }} руб.</p>
-              {% endif %}
-              {% if tarif.stream_offer_price >= 0 %}
-              <p>Онлайн кинотеатры: {{ tarif.stream_offer_price }} руб.</p>
-              {% endif %}
-              <p>{{ tarif.ext_information }}</p>
-            </div>
-            <div class="col-3">
-              <div>
-              <button type="button" class="btn btn-success">Сайт оператора</button>
-              </div>
-            </div>
-            <hr />
+    <div class="container">
+      <h4>{{ page_title }}</h4>
+      {% for tarif in tarifs_list %}
+      <div class="row">
+          <div class="col-9">
+            <h5>{{ tarif.mobile_operator_name }}</h5>
+            <h5>{{ tarif.tarif_name }} - {{ tarif.price }}₽/мес</h5>
+            <h6> В абонентскую плату включено:</h6>
+            <p>{{ tarif.phone_internet_quantity }}Гб, {{ tarif.phone_minutes_quantity }}минут,  {{ tarif.phone_sms_quantity }}SMS.</p>
+            {% if tarif.social_offer_price >= 0 or tarif.messenger_price >= 0 or tarif.music_offer_price >= 0 or tarif.video_offer_price >= 0 or tarif.stream_offer_price >= 0 %} 
+            <h6> Дополнительные опции:</h6>
+            {% endif %}
+            {% if tarif.social_offer_price >= 0 %}
+            <p>Социальные сети: {{ tarif.social_offer_price }} ₽/мес</p>
+            {% endif %}
+            {% if tarif.messenger_price >= 0 %}
+            <p>Мессенджеры: {{ tarif.messenger_price }} ₽/мес</p>
+            {% endif %}
+            {% if tarif.music_offer_price >= 0 %}
+            <p>Музыка: {{ tarif.music_offer_price }} ₽/мес</p>
+            {% endif %}
+            {% if tarif.video_offer_price >= 0 %}
+            <p>Видео: {{ tarif.video_offer_price }} ₽/мес</p>
+            {% endif %}
+            {% if tarif.stream_offer_price >= 0 %}
+            <p>Онлайн кинотеатры: {{ tarif.stream_offer_price }} ₽/мес</p>
+            {% endif %}
+            <p>{{ tarif.ext_information }}</p>
           </div>
-        </div>
+          <div class="col-3">
+            <a class="btn btn-primary" href="{{ tarif.page_link }}" role="button">Сайт оператора</a>
+            <p>{{ tarif.page_link }}</p>
+          </div>
       </div>
-    {% endfor %}
+      <hr />
+      {% endfor %}
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

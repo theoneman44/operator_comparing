@@ -14,7 +14,7 @@ class Links(db.Model):
 
     # метод представления базы данных при выводе
     def __repr__(self):
-        return f"Tarif {self.mobile_operator_name}, {self.tarif_name}."
+        return f"Tarif {self.mobile_operator_name}, {self.tarif_name}, {self.page_link}."
 
 
 class Tarif(db.Model):
