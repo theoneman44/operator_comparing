@@ -1,10 +1,25 @@
+from sqlalchemy.orm import relationship
+from sqlalchemy import ForeignKey
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
 
+class Links(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    mobile_operator_name = db.Column(db.String, nullable=False)
+    tarif_name = db.Column(db.String, nullable=False)
+    page_link = db.Column(db.Text, nullable=False)
+    tarif = relationship("Tarif", back_populates="link", lazy="joined")
+
+    # метод представления базы данных при выводе
+    def __repr__(self):
+        return f"Tarif {self.mobile_operator_name}, {self.tarif_name}."
+
+
 class Tarif(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    link_id = db.Column(db.Integer, ForeignKey(Links.id), index=True, nullable=False)
     mobile_operator_name = db.Column(db.String, nullable=True)
     tarif_name = db.Column(db.String, nullable=True)
     price = db.Column(db.Integer, nullable=True)
@@ -19,6 +34,7 @@ class Tarif(db.Model):
     video_offer_price = db.Column(db.Integer, nullable=True)
     stream_offer_price = db.Column(db.Integer, nullable=True)
     ext_information = db.Column(db.Text, nullable=True)
+    link = relationship("Links", back_populates="tarif", lazy="joined")
 
     # метод представления базы данных при выводе
     def __repr__(self):

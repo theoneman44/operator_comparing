@@ -1,9 +1,4 @@
 import csv
-# import pandas as pd
-
-# from db import db_session
-# from webapp.model import Tarif
-# from config import XLSX
 
 
 # читаем csv файл и на выходе получаем словарь с нужными полями

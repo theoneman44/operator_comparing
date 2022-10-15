@@ -1,10 +1,10 @@
 import csv
 
-from webapp.model import Tarif, db
+from webapp.models import Links, Tarif, db
 
 
 # читаем csv файл и на выходе получаем словарь с нужными полями
-def read_csv(filename):
+def read_csv_tarif(filename):
     with open(filename, 'r', encoding='utf-8') as f:
         fields = ['order',
                   'mobile_operator_name',
@@ -22,7 +22,6 @@ def read_csv(filename):
                   'stream_offer_price',
                   'ext_information']
         reader = csv.DictReader(f, fields, delimiter=',', )
-        # tarif_data = []
         for row in reader:
             row['unlim_phone_internet'] = bool(row['unlim_phone_internet'])
             row['unlim_phone_minutes'] = bool(row['unlim_phone_minutes'])
@@ -35,7 +34,6 @@ def read_csv(filename):
             row['music_offer_price'] = int(row['music_offer_price'])
             row['video_offer_price'] = int(row['video_offer_price'])
             row['stream_offer_price'] = int(row['stream_offer_price'])
-            # tarif_data.append(row)
             save_tarif_data(row)
 
 
@@ -53,10 +51,17 @@ def save_tarif_data(data):
                       music_offer_price=data['music_offer_price'],
                       video_offer_price=data['video_offer_price'],
                       stream_offer_price=data['stream_offer_price'],
-                      ext_information=data['ext_information']
+                      ext_information=data['ext_information'],
+                      link_id=get_link_id(data['tarif_name'])
                       )
-    try:
-        db.session.add(new_tarif)
-        db.session.commit()
-    finally:
-        db.session.close()
+    db.session.add(new_tarif)
+    db.session.commit()
+
+
+def get_link_id(tarif_name):
+    link = Links.query.filter(Links.tarif_name == tarif_name).first()
+    return link.id
+
+
+if __name__ == '__main__':
+    read_csv_tarif('input_data_from.csv')
