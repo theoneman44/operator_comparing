@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 
 from webapp.db import db
 from webapp.models import Tarif, Links
+from webapp.queries import queries
 
 
 def create_app():
@@ -14,14 +15,11 @@ def create_app():
         request_data = request.args
         title = "Предлагаемые тарифы"
 
-        if 'phone_internet_quantity' and 'phone_minutes_quantity' and 'phone_sms_quantity' in request_data.keys():
-            tarifs_list = Tarif.query.filter(Tarif.phone_internet_quantity == request_data['phone_internet_quantity'],
-                                             Tarif.phone_minutes_quantity == request_data['phone_minutes_quantity'],
-                                             Tarif.phone_sms_quantity == request_data['phone_sms_quantity']
-                                             ).all()
-
+        if 'phone_sms_quantity' not in request_data.keys():
+            tarifs_list = ['Настройте фильтр и увидите рекомендации']
+            return render_template('index.html', page_title=title, tarifs_list=tarifs_list)
         else:
-            tarifs_list = 'Настройте фильтр и увидите рекомендации'
-        return render_template('index.html', page_title=title, tarifs_list=tarifs_list)
+            tarifs_list = queries(request_data)
+            return render_template('index2.html', page_title=title, tarifs_list=tarifs_list)
 
     return app
