@@ -1,7 +1,4 @@
-from flask import Flask, render_template, request
-
-from webapp.db import db
-from webapp.models import Tarif, Links
+from webapp.models import Tarif
 
 # mobile_operator_name=0&phone_internet_quantity=0&unlim_phone_internet=0&phone_minutes_quantity=0&unlim_phone_minutes=0&phone_sms_quantity=0&
 # social_offer_price=0&messenger_price=0&music_offer_price=0&video_offer_price=0&stream_offer_price=0
@@ -22,10 +19,8 @@ def queries(request_result):
                                          Tarif.phone_minutes_quantity == request_result['phone_minutes_quantity'],
                                          Tarif.phone_sms_quantity == request_result['phone_sms_quantity']
                                          ).all()
+
         return tarifs_list
-        # for row in tarifs_list:
-        #     print(row.mobile_operator_name)
-        # return tarifs_list
     elif condition2:
         print(2)
         tarifs_list = Tarif.query.filter(Tarif.phone_internet_quantity == request_result['phone_internet_quantity'],
@@ -79,9 +74,3 @@ def queries(request_result):
                                          Tarif.phone_sms_quantity == request_result['phone_sms_quantity']
                                          ).all()
         return tarifs_list
-
-    # def ext_options(ext_options_name, request_result, tarifs_list):
-        
-    #     for row in tarifs_list:
-    #         if ext_options_name in request_result.keys():
-                
