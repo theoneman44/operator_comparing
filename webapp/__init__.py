@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 
 from webapp.db import db
-from webapp.models import Tarif, Links
 from webapp.queries import queries
 
 
