@@ -8,3 +8,5 @@ input_data.csv
 data/
 config.py
 readme.txt
+*.db
+trash/
