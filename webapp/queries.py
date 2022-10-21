@@ -12,7 +12,9 @@ def queries(request_result):
         tarifs_list = tarifs_list.filter(Tarif.mobile_operator_name == request_result['mobile_operator_name'])
 
     if request_result['unlim_phone_internet'] == '0':
-        tarifs_list = tarifs_list.filter(Tarif.phone_internet_quantity == request_result['phone_internet_quantity'])
+        tarifs_list = tarifs_list.filter(Tarif.phone_internet_quantity <= int(request_result['phone_internet_quantity']) + 5,
+                                         Tarif.phone_internet_quantity >= int(request_result['phone_internet_quantity']) - 5
+                                         )
     elif request_result['unlim_phone_internet'] == '1':
         tarifs_list = tarifs_list.filter(Tarif.unlim_phone_internet == request_result['unlim_phone_internet'])
 
