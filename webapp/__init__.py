@@ -12,13 +12,11 @@ def create_app():
     @app.route("/")
     def index():
         request_data = request.args
-        title = "Предлагаемые тарифы"
-
-        if 'phone_sms_quantity' not in request_data.keys():
-            tarifs_list = ['Настройте фильтр и увидите рекомендации']
-            return render_template('index.html', page_title=title, tarifs_list=tarifs_list)
-        else:
+        title = "Сравнение мобильных операторов"
+        if request_data:
             tarifs_list = queries(request_data)
-            return render_template('index2.html', page_title=title, tarifs_list=tarifs_list)
+            return render_template('index.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list))
+        else:
+            return render_template('index.html', title=title)
 
     return app
