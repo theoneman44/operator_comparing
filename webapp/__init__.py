@@ -13,7 +13,10 @@ def create_app():
     def index():
         request_data = request.args
         title = "Сравнение мобильных операторов"
-        tarifs_list = queries(request_data)
-        return render_template('index.html', title=title, tarifs_list=tarifs_list)
+        if request_data:
+            tarifs_list = queries(request_data)
+            return render_template('index.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list))
+        else:
+            return render_template('index.html', title=title)
 
     return app

@@ -13,7 +13,7 @@
       <body>
         <!-- Header --> 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">Сравнение мобильных операторов</a>
+          <a class="navbar-brand" href="#">Сравнение тарифов мобильных операторов</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -135,29 +135,29 @@
           </div>
         </form>
        <!-- Block 3 -->
+
        <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Тариф</th>
+            <th scope="col">Оператор - Тариф</th>
             <th scope="col">В абонентскую плату включено</th>
             <th scope="col">Абонентская плата</th>
-            <th scope="col">Рейтинг</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           {% for tarif in tarifs_list %}
             <tr class="table-active">
               <th scope="row">{{ tarif.mobile_operator_name }} - {{ tarif.tarif_name }}</th>
-              <td>{{ tarif.phone_internet_quantity }}Гб, {{ tarif.phone_minutes_quantity }}минут,  {{ tarif.phone_sms_quantity }}SMS.</td>
+              <td>{{ tarif.phone_internet_quantity }} Гб, {{ tarif.phone_minutes_quantity }} минут,  {{ tarif.phone_sms_quantity }} SMS.</td>
               <td>{{ tarif.price }}₽/мес</td>
               <td><a class="btn btn-primary" href="{{ tarif.link.page_link }}" data-bs-toggle="offcanvas" href="" role="button" aria-controls="offcanvasExample" target="_blank">
                 Сайт оператора</a>
                 </td>
-          
           </tr>
           {% endfor %}
         </tbody>
-      </table>
+        </table>
       
       <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

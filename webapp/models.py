@@ -19,7 +19,7 @@ class Links(db.Model):
 
 class Tarif(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    link_id = db.Column(db.Integer, ForeignKey(Links.id), index=True, nullable=False)
+    link_id = db.Column(db.Integer, ForeignKey(Links.id), nullable=False)
     mobile_operator_name = db.Column(db.String, nullable=True)
     tarif_name = db.Column(db.String, nullable=True)
     price = db.Column(db.Integer, nullable=True)
