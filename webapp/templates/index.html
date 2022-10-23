@@ -60,27 +60,29 @@
             </div>
           </div>
         </section>
+        <form action="/" method="get" target="_self">
         <div class="row">
             <div class="col">
-              <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>Выбор оператора</option>
-                <option value="1">Мегафон</option>
-                <option value="2">МТС</option>
-                <option value="3">Билайн</option>
-                <option value="4">Теле2</option>
-                <option value="5">Yota</option>
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="mobile_operator_name">
+                <option selected value="0">Выбор оператора</option>
+                <option value="Мегафон">Мегафон</option>
+                <option value="МТС">МТС</option>
+                <option value="Билайн">Билайн</option>
+                <option value="Теле2">Теле2</option>
+                <option value="Yota">Yota</option>
               </select>
             </div>
             <div class="col">
               <script>function showVal(newVal){
                 document.getElementById("valBox").innerHTML=newVal;
               }</script>
-              <span id="valBox"></span>
-              <label for="customRange3" class="form-label">ГБ Интернет</label>
+              
+              <label for="customRange3" class="form-label">Интернет</label>
                 <input type="range" class="form-range" name="phone_internet_quantity" min="0" max="60" step="5" id="customRange3" value="" onchange="showVal(this.value)">
+                <span id="valBox"></span><label> ГБ</label>
                 <fieldset class="form-group">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="unlim_phone_internet">
                     <label class="form-check-label" for="flexCheckDefault">
                       Безлимит
                     </label>
@@ -91,12 +93,13 @@
               <script>function showVal_1(newVal_1){
                 document.getElementById("valBox_1").innerHTML=newVal_1;
               }</script>
-            <span id="valBox_1"></span>
+            
               <label for="customRange3" class="form-label">Минуты</label>
               <input type="range" class="form-range" name="phone_minutes_quantity" min="0" max="2000" step="200" id="customRange3" onchange="showVal_1(this.value)">
+              <span id="valBox_1"></span>
               <fieldset class="form-group">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="unlim_phone_minutes">
                   <label class="form-check-label" for="flexCheckDefault">
                     Безлимит
                   </label>
@@ -107,9 +110,10 @@
             <script>function showVal_2(newVal_2){
               document.getElementById("valBox_2").innerHTML=newVal_2;
             }</script>
-          <span id="valBox_2"></span>
+          
             <label for="customRange3" class="form-label">СМС</label>
             <input type="range" class="form-range" name="phone_sms_quantity" min="0" max="500" step="50" id="customRange3" onchange="showVal_2(this.value)">
+            <span id="valBox_2"></span>
           </div>
           </div>
           <div class="row justify-content-center">
@@ -129,8 +133,31 @@
               </button>
             </div>
           </div>
+        </form>
        <!-- Block 3 -->
-       
+       <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Тариф</th>
+            <th scope="col">В абонентскую плату включено</th>
+            <th scope="col">Абонентская плата</th>
+            <th scope="col">Рейтинг</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for tarif in tarifs_list %}
+            <tr class="table-active">
+              <th scope="row">{{ tarif.mobile_operator_name }} - {{ tarif.tarif_name }}</th>
+              <td>{{ tarif.phone_internet_quantity }}Гб, {{ tarif.phone_minutes_quantity }}минут,  {{ tarif.phone_sms_quantity }}SMS.</td>
+              <td>{{ tarif.price }}₽/мес</td>
+              <td><a class="btn btn-primary" href="{{ tarif.link.page_link }}" data-bs-toggle="offcanvas" href="" role="button" aria-controls="offcanvasExample" target="_blank">
+                Сайт оператора</a>
+                </td>
+          
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
       
       <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
