@@ -1,8 +1,7 @@
 from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey
-from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+from webapp.db import db
 
 
 class Links(db.Model):

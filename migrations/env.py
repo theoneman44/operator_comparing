@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), '..'
 # добавляем в самое начало системного пути путь к нашему файлу и две точки
 # это нужно для того чтобы мигратионс имела связь с нашими файлами из категории выше
 
-from webapp.models import db
+from webapp.db import db
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -23,7 +23,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = db.Model.metadata # возможно неправильно
+target_metadata = db.Model.metadata  # возможно неправильно
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
