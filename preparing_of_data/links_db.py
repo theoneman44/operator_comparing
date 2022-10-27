@@ -1,6 +1,6 @@
 import csv
 
-from webapp.models import Links
+from webapp.mobile.models import Links
 from webapp.db import db
 
 

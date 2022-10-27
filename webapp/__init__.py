@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 
 from webapp.db import db
-from webapp.queries import queries
+from webapp.mobile.queries import queries
 
 
 def create_app():

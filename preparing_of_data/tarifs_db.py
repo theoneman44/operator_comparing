@@ -1,6 +1,6 @@
 import csv
 
-from webapp.models import Links, Tarif, db
+from webapp.mobile.models import Links, Tarif, db
 
 
 # читаем csv файл и на выходе получаем словарь с нужными полями
