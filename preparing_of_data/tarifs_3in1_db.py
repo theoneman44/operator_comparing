@@ -1,5 +1,5 @@
 import csv
-from webapp.db import db
+from webapp.all_in.models import db
 
 from webapp.all_in.models import Tarif_3in1
 

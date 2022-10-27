@@ -1,5 +1,6 @@
-from webapp.db import db
+from flask_sqlalchemy import SQLAlchemy
 
+db = SQLAlchemy()
 
 class Tarif_3in1(db.Model):
     id = db.Column(db.Integer, primary_key=True)

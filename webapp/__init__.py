@@ -1,13 +1,15 @@
 from flask import Flask, render_template, request
 
-from webapp.db import db
+from webapp.mobile.models import db as db1
+from webapp.all_in.models import db as db2
 from webapp.mobile.queries import queries
 
 
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile('config.py')
-    db.init_app(app)
+    db1.init_app(app)
+    db2.init_app(app)
 
     @app.route("/")
     def index():
