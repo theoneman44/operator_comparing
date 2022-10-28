@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 
 from webapp.db import db
 from webapp.queries import queries
@@ -15,8 +15,14 @@ def create_app():
         title = "Сравнение мобильных операторов"
         if request_data:
             tarifs_list = queries(request_data)
-            return render_template('index.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list))
+            return render_template('mobile/mobile.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list))
         else:
-            return render_template('index.html', title=title)
+            return render_template('mobile/mobile.html', title=title)
+    
+    @app.route("/images/<path:name>")
+    def download_file(name):
+        return send_from_directory(
+        app.config['UPLOAD_FOLDER'], name, as_attachment=True
+    )
 
     return app
