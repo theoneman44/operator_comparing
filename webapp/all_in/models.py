@@ -2,6 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+
 class Tarif_3in1(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     mobile_operator_name = db.Column(db.String, nullable=True)
