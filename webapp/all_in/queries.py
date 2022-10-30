@@ -12,7 +12,9 @@ def queries(request_result):
                                           between(Tarif_3in1.phone_minutes_qty, int(request_result['phone_minutes_qty']) - 199,
                                           int(request_result['phone_minutes_qty']) + 199),
                                           between(Tarif_3in1.internet_speed, int(request_result['internet_speed']) - 100,
-                                          int(request_result['internet_speed']) + 100)
+                                          int(request_result['internet_speed']) + 100),
+                                          between(Tarif_3in1.channels_qty, int(request_result['channels_qty']) - 50,
+                                          int(request_result['channels_qty']) + 50)
                                           )
 
     if request_result['family_num'] > '0':
