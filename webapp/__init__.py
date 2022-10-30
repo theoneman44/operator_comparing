@@ -21,12 +21,12 @@ def create_app():
             return render_template('mobile/mobile.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list), request_data=request_data)
         else:
             return render_template('mobile/mobile.html', title=title, request_data=request_data)
-    
+
     @app.route("/images/<path:name>")
     def download_file(name):
         return send_from_directory(
-        app.config['UPLOAD_FOLDER'], name, as_attachment=True
-    )
+            app.config['UPLOAD_FOLDER'], name, as_attachment=True
+            )
 
     @app.route("/all_in")
     def index1():

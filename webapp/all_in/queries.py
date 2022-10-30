@@ -24,5 +24,4 @@ def queries(request_result):
         tarifs_list = tarifs_list.filter(Tarif_3in1.mobile_operator_name == request_result['mobile_operator_name'])
 
     tarifs_list = tarifs_list.order_by(Tarif_3in1.price.asc()).all()
-
     return tarifs_list
