@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action="/" method="get" target="_self">
+<form action="/all_in" method="get" target="_self">
 <div class="row" style="margin-left: 20px;">
     <div class="col">
         <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="mobile_operator_name">
@@ -72,7 +72,7 @@
         <th scope="row">{{ tarif_3in1.mobile_operator_name }} - {{ tarif_3in1.tarif_name }}</th>
         <td>{{ tarif_3in1.phone_internet_qty }} Гб, {{ tarif_3in1.phone_minutes_qty }} минут,  {{ tarif_3in1.internet_speed }} Мб/с, {{ tarif_3in1.channels_qty }} каналов</td>
         <td>{{ tarif_3in1.price }}₽/мес</td>
-        <td><a class="btn btn-primary" href="{{ tarif_3in1.link.page_link }}" data-bs-toggle="offcanvas" href="" role="button" aria-controls="offcanvasExample" target="_blank">
+        <td><a class="btn btn-primary" href="{{ tarif_3in1.page_link }}" data-bs-toggle="offcanvas" href="" role="button" aria-controls="offcanvasExample" target="_blank">
         Сайт оператора</a>
         </td>
     </tr>

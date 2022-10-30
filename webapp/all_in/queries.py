@@ -17,8 +17,8 @@ def queries(request_result):
                                           int(request_result['channels_qty']) + 50)
                                           )
 
-    if request_result['family_num'] > '0':
-        tarifs_list = tarifs_list.filter(Tarif_3in1.family_num > '0')
+    # if request_result['family_num'] > '0':
+    #     tarifs_list = tarifs_list.filter(Tarif_3in1.family_num > '0')
 
     if request_result['mobile_operator_name'] != '0':
         tarifs_list = tarifs_list.filter(Tarif_3in1.mobile_operator_name == request_result['mobile_operator_name'])

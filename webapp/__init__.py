@@ -21,7 +21,7 @@ def create_app():
             return render_template('mobile/mobile.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list))
         else:
             return render_template('mobile/mobile.html', title=title)
-    
+
     @app.route("/images/<path:name>")
     def download_file(name):
         return send_from_directory(
