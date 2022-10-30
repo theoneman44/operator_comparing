@@ -34,8 +34,8 @@ def create_app():
         title = "Сравнение мобильных операторов"
         if request_data:
             tarifs_list = queries2(request_data)
-            return render_template('all_in/all_in.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list))
+            return render_template('all_in/all_in.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list), request_data=request_data)
         else:
-            return render_template('all_in/all_in.html', title=title)
+            return render_template('all_in/all_in.html', title=title, request_data=request_data)
 
     return app
