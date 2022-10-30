@@ -18,9 +18,9 @@ def create_app():
         title = "Сравнение мобильных операторов"
         if request_data:
             tarifs_list = queries1(request_data)
-            return render_template('mobile/mobile.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list))
+            return render_template('mobile/mobile.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list), request_data=request_data)
         else:
-            return render_template('mobile/mobile.html', title=title)
+            return render_template('mobile/mobile.html', title=title, request_data=request_data)
     
     @app.route("/images/<path:name>")
     def download_file(name):

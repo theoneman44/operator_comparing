@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action="/" method="get" target="_self">
+<form action="/all_in" method="get" target="_self">
 <div class="row" style="margin-left: 20px;">
     <div class="col">
         <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="mobile_operator_name">
@@ -40,7 +40,7 @@
     <span id="valBox_2"></span><label> Мб/с</label>
     </div>
     </div>
-    <div class="col-md-3 offset-md-3">
+    <div class="col-md-3">
         <script>function showVal_3(newVal_3){
             document.getElementById("valBox_3").innerHTML=newVal_3;
         }</script>
