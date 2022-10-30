@@ -18,7 +18,7 @@
         }</script>
         
         <label for="customRange3" class="form-label">Интернет</label>
-        <input type="range" class="form-range" name="phone_internet_quantity" min="0" max="60" step="5" id="customRange3" value="" onchange="showVal(this.value)">
+        <input type="range" class="form-range" name="phone_internet_qty" min="0" max="60" step="5" id="customRange3" value="" onchange="showVal(this.value)">
         <span id="valBox"></span><label> ГБ</label>
     </div>
     <div class="col">
@@ -27,7 +27,7 @@
         }</script>
     
         <label for="customRange3" class="form-label">Минуты</label>
-        <input type="range" class="form-range" name="phone_minutes_quantity" min="0" max="2000" step="200" id="customRange3" onchange="showVal_1(this.value)">
+        <input type="range" class="form-range" name="phone_minutes_qty" min="0" max="2000" step="200" id="customRange3" onchange="showVal_1(this.value)">
         <span id="valBox_1"></span>
     </div>
     <div class="col">
@@ -40,16 +40,14 @@
     <span id="valBox_2"></span><label> Мб/с</label>
     </div>
     </div>
-    <div class="row justify-content-center">
     <div class="col-md-3 offset-md-3">
-        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-        <option selected>Безлимитные приложения</option>
-        <option value="1">Соцсети</option>
-        <option value="2">Музыка</option>
-        <option value="3">Видеохостинги</option>
-        <option value="4">Мессенджеры</option>
-        <option value="5">Онлайн кинотеатры</option>
-        </select>
+        <script>function showVal_3(newVal_3){
+            document.getElementById("valBox_3").innerHTML=newVal_3;
+        }</script>
+        
+        <label for="customRange3" class="form-label">Количество каналов</label>
+        <input type="range" class="form-range" name="channels_qty" min="0" max="250" step="100" id="customRange3" onchange="showVal_3(this.value)">
+        <span id="valBox_3"></span>
     </div>
     <div class="col-md-3 offset-md-3" style="margin-bottom: 20px;">
         <button class="btn btn-primary" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
@@ -72,7 +70,7 @@
     {% for tarif_3in1 in tarifs_list %}
     <tr class="table-active" style="margin-left: 20px;">
         <th scope="row">{{ tarif_3in1.mobile_operator_name }} - {{ tarif_3in1.tarif_name }}</th>
-        <td>{{ tarif_3in1.phone_internet_quantity }} Гб, {{ tarif_3in1.phone_minutes_quantity }} минут,  {{ tarif_3in1.internet_speed }} Мб/с, {{ tarif_3in1.channels_qty }}</td>
+        <td>{{ tarif_3in1.phone_internet_qty }} Гб, {{ tarif_3in1.phone_minutes_qty }} минут,  {{ tarif_3in1.internet_speed }} Мб/с, {{ tarif_3in1.channels_qty }} каналов</td>
         <td>{{ tarif_3in1.price }}₽/мес</td>
         <td><a class="btn btn-primary" href="{{ tarif_3in1.link.page_link }}" data-bs-toggle="offcanvas" href="" role="button" aria-controls="offcanvasExample" target="_blank">
         Сайт оператора</a>
