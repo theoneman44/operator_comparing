@@ -18,8 +18,8 @@
         }</script>
         
         <label for="customRange3" class="form-label">Интернет</label>
-        <input type="range" class="form-range" name="phone_internet_quantity" min="0" max="60" step="5" id="customRange3" value="" onchange="showVal(this.value)">
-        <span id="valBox"></span><label> ГБ</label>
+        <input type="range" class="form-range" name="phone_internet_quantity" value="{{ request_data.phone_internet_quantity }}" min="0" max="60" step="5" id="customRange3" value="" onchange="showVal(this.value)">
+        <span id="valBox">{{ request_data.phone_internet_quantity }}</span><label> ГБ</label>
         <fieldset class="form-group">
             <div class="form-check">
             <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="unlim_phone_internet">
@@ -35,8 +35,8 @@
         }</script>
     
         <label for="customRange3" class="form-label">Минуты</label>
-        <input type="range" class="form-range" name="phone_minutes_quantity" min="0" max="2000" step="200" id="customRange3" onchange="showVal_1(this.value)">
-        <span id="valBox_1"></span>
+        <input type="range" class="form-range" name="phone_minutes_quantity" value="{{ request_data.phone_minutes_quantity }}" min="0" max="2000" step="200" id="customRange3" onchange="showVal_1(this.value)">
+        <span id="valBox_1">{{ request_data.phone_minutes_quantity }}</span>
         <fieldset class="form-group">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="unlim_phone_minutes">
@@ -52,11 +52,11 @@
     }</script>
     
     <label for="customRange3" class="form-label">СМС</label>
-    <input type="range" class="form-range" name="phone_sms_quantity" min="0" max="500" step="50" id="customRange3" onchange="showVal_2(this.value)">
-    <span id="valBox_2"></span>
+    <input type="range" class="form-range" name="phone_sms_quantity" value="{{ request_data.phone_sms_quantity }}" min="0" max="500" step="50" id="customRange3" onchange="showVal_2(this.value)">
+    <span id="valBox_2">{{ request_data.phone_sms_quantity }}</span>
     </div>
     </div>
-    <div class="row justify-content-center">
+    <!-- <div class="row justify-content-center">
     <div class="col-md-3 offset-md-3">
         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
         <option selected>Безлимитные приложения</option>
@@ -66,8 +66,8 @@
         <option value="4">Мессенджеры</option>
         <option value="5">Онлайн кинотеатры</option>
         </select>
-    </div>
-    <div class="col-md-3 offset-md-3" style="margin-bottom: 20px;">
+    </div> -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-bottom: 20px; margin-right: 20px;">
         <button class="btn btn-primary" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
         Подобрать тариф
         </button>
@@ -80,6 +80,7 @@
     <tr>
     <th scope="col">Оператор - Тариф</th>
     <th scope="col">В абонентскую плату включено</th>
+    <th scope="col">Дополнительные опции</th>
     <th scope="col">Абонентская плата</th>
     <th scope="col"></th>
     </tr>
@@ -90,6 +91,23 @@
         <th scope="row">{{ tarif.mobile_operator_name }} - {{ tarif.tarif_name }}</th>
         <td>{{ tarif.phone_internet_quantity }} Гб, {{ tarif.phone_minutes_quantity }} минут,  {{ tarif.phone_sms_quantity }} SMS.</td>
         <td>{{ tarif.price }}₽/мес</td>
+        <td>{% if tarif.social_offer_price >= 0 %}
+            <p>Социальные сети: {{ tarif.social_offer_price }} ₽/мес</p>
+            {% endif %}
+            {% if tarif.messenger_price >= 0 %}
+            <p>Мессенджеры: {{ tarif.messenger_price }} ₽/мес</p>
+            {% endif %}
+            {% if tarif.music_offer_price >= 0 %}
+            <p>Музыка: {{ tarif.music_offer_price }} ₽/мес</p>
+            {% endif %}
+            {% if tarif.video_offer_price >= 0 %}
+            <p>Видео: {{ tarif.video_offer_price }} ₽/мес</p>
+            {% endif %}
+            {% if tarif.stream_offer_price >= 0 %}
+            <p>Онлайн кинотеатры: {{ tarif.stream_offer_price }} ₽/мес</p>
+            {% endif %}
+            <p>{{ tarif.ext_information }}</p></td>
+          <td>{{ tarif.price }}₽/мес</td>
         <td><a class="btn btn-primary" href="{{ tarif.link.page_link }}" data-bs-toggle="offcanvas" href="" role="button" aria-controls="offcanvasExample" target="_blank">
         Сайт оператора</a>
         </td>
