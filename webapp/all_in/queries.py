@@ -7,14 +7,14 @@ from webapp.all_in.models import Tarif_3in1
 
 def queries(request_result):
 
-    tarifs_list = Tarif_3in1.query.filter(between(Tarif_3in1.phone_internet_qty, int(request_result['phone_internet_qty']) - 6,
-                                          int(request_result['phone_internet_qty']) + 6),
-                                          between(Tarif_3in1.phone_minutes_qty, int(request_result['phone_minutes_qty']) - 201,
-                                          int(request_result['phone_minutes_qty']) + 201),
-                                          between(Tarif_3in1.internet_speed, int(request_result['internet_speed']) - 201,
-                                          int(request_result['internet_speed']) + 201),
-                                          between(Tarif_3in1.channels_qty, int(request_result['channels_qty']) - 51,
-                                          int(request_result['channels_qty']) + 51)
+    tarifs_list = Tarif_3in1.query.filter(between(Tarif_3in1.phone_internet_qty, int(request_result['phone_internet_qty']) - 11,
+                                          int(request_result['phone_internet_qty']) + 11),
+                                          between(Tarif_3in1.phone_minutes_qty, int(request_result['phone_minutes_qty']) - 301,
+                                          int(request_result['phone_minutes_qty']) + 301),
+                                          between(Tarif_3in1.internet_speed, int(request_result['internet_speed']) - 301,
+                                          int(request_result['internet_speed']) + 301),
+                                          between(Tarif_3in1.channels_qty, int(request_result['channels_qty']) - 101,
+                                          int(request_result['channels_qty']) + 101)
                                           )
 
     # if request_result['family_num'] > '0':
