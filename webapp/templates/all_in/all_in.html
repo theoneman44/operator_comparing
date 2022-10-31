@@ -18,8 +18,8 @@
         }</script>
         
         <label for="customRange3" class="form-label">Интернет</label>
-        <input type="range" class="form-range" name="phone_internet_qty" min="0" max="60" step="5" id="customRange3" value="" onchange="showVal(this.value)">
-        <span id="valBox"></span><label> ГБ</label>
+        <input type="range" class="form-range" name="phone_internet_qty" min="20" max="60" step="10" id="customRange3" value="{{ request_data.phone_internet_qty }}" onchange="showVal(this.value)">
+        <span id="valBox">{{ request_data.phone_internet_qty }}</span><label> ГБ</label>
     </div>
     <div class="col">
         <script>function showVal_1(newVal_1){
@@ -27,8 +27,8 @@
         }</script>
     
         <label for="customRange3" class="form-label">Минуты</label>
-        <input type="range" class="form-range" name="phone_minutes_qty" min="0" max="2000" step="200" id="customRange3" onchange="showVal_1(this.value)">
-        <span id="valBox_1"></span>
+        <input type="range" class="form-range" name="phone_minutes_qty" min="200" max="3000" step="400" id="customRange3" value="{{ request_data.phone_minutes_qty }}" onchange="showVal_1(this.value)">
+        <span id="valBox_1">{{ request_data.phone_minutes_qty }}</span>
     </div>
     <div class="col">
     <script>function showVal_2(newVal_2){
@@ -36,8 +36,8 @@
     }</script>
     
     <label for="customRange3" class="form-label">Скорость домашнего интернета</label>
-    <input type="range" class="form-range" name="internet_speed" min="100" max="1000" step="100" id="customRange3" onchange="showVal_2(this.value)">
-    <span id="valBox_2"></span><label> Мб/с</label>
+    <input type="range" class="form-range" name="internet_speed" min="0" max="1000" step="200" id="customRange3" value="{{ request_data.internet_speed }}" onchange="showVal_2(this.value)">
+    <span id="valBox_2">{{ request_data.internet_speed }}</span><label> Мб/с</label>
     </div>
     </div>
     <div class="col-md-3">
@@ -46,8 +46,8 @@
         }</script>
         
         <label for="customRange3" class="form-label">Количество каналов</label>
-        <input type="range" class="form-range" name="channels_qty" min="0" max="250" step="100" id="customRange3" onchange="showVal_3(this.value)">
-        <span id="valBox_3"></span>
+        <input type="range" class="form-range" name="channels_qty" min="0" max="300" step="100" id="customRange3" value="{{ request_data.channels_qty }}" onchange="showVal_3(this.value)">
+        <span id="valBox_3">{{ request_data.channels_qty }}</span>
     </div>
     <div class="col-md-3 offset-md-3" style="margin-bottom: 20px;">
         <button class="btn btn-primary" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
@@ -72,7 +72,7 @@
         <th scope="row">{{ tarif_3in1.mobile_operator_name }} - {{ tarif_3in1.tarif_name }}</th>
         <td>{{ tarif_3in1.phone_internet_qty }} Гб, {{ tarif_3in1.phone_minutes_qty }} минут,  {{ tarif_3in1.internet_speed }} Мб/с, {{ tarif_3in1.channels_qty }} каналов</td>
         <td>{{ tarif_3in1.price }}₽/мес</td>
-        <td><a class="btn btn-primary" href="{{ tarif_3in1.page_link }}" data-bs-toggle="offcanvas" href="" role="button" aria-controls="offcanvasExample" target="_blank">
+        <td><a class="btn btn-primary" href="{{ tarif_3in1.page_link }}" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvasExample" target="_blank">
         Сайт оператора</a>
         </td>
     </tr>

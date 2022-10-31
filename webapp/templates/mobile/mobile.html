@@ -80,8 +80,8 @@
     <tr>
     <th scope="col">Оператор - Тариф</th>
     <th scope="col">В абонентскую плату включено</th>
-    <th scope="col">Абонентская плата</th>
     <th scope="col">Дополнительные опции</th>
+    <th scope="col">Абонентская плата</th>
     <th scope="col"></th>
     </tr>
 </thead>
@@ -108,7 +108,7 @@
             {% endif %}
             <p>{{ tarif.ext_information }}</p></td>
           <td>{{ tarif.price }}₽/мес</td>
-        <td><a class="btn btn-primary" href="{{ tarif.link.page_link }}" data-bs-toggle="offcanvas" href="" role="button" aria-controls="offcanvasExample" target="_blank">
+        <td><a class="btn btn-primary" href="{{ tarif.link.page_link }}" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvasExample" target="_blank">
         Сайт оператора</a>
         </td>
     </tr>
