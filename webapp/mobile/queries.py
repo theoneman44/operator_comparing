@@ -40,6 +40,7 @@ def queries(request_result):
 
     tarifs_list = standart_queries(request_result, tarifs_list)
 
+    # если тарифы не нашлись исключаем из поиска смс фильтр и показываем результат
     if len(tarifs_list) == 0:
         tarifs_list = queries_without_sms(request_result)
         return tarifs_list
