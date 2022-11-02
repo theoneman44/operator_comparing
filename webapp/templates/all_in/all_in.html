@@ -40,8 +40,7 @@
     <span id="valBox_2">{{ request_data.internet_speed }}</span><label> Мб/с</label>
     </div>
 </div>
-<div class="row" style="margin-left: 20px;">
-    <div class="col-md-3 offset-md-3">
+    <div class="col-md-3 offset-md-3" style="margin-top: 20px;">
         <script>function showVal_3(newVal_3){
             document.getElementById("valBox_3").innerHTML=newVal_3;
         }</script>
@@ -50,7 +49,7 @@
         <input type="range" class="form-range" name="channels_qty" min="0" max="300" step="100" id="customRange3" value="{{ request_data.channels_qty }}" onchange="showVal_3(this.value)">
         <span id="valBox_3">{{ request_data.channels_qty }}</span>
     </div>
-    <div class="col-md-3 offset-md-3" style="margin-bottom: 20px;">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-bottom: 20px; margin-right: 20px;">
         <button class="btn btn-primary" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
         Подобрать тариф
         </button>
@@ -58,7 +57,7 @@
 </div>
 </form>
 <!-- Block 3 -->
-<table class="table table-hover">
+<table class="table table-hover" {% if not tarifs_list %} style="visibility: hidden;"{% endif %} >
 <thead>
     <tr>
     <th scope="col">Оператор - Тариф</th>
