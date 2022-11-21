@@ -10,4 +10,4 @@ config.py
 readme.txt
 *.db
 trash/
-
+venv/
