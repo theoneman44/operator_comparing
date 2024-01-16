@@ -24,5 +24,5 @@ class Tarif_3in1(db.Model):
     page_link = db.Column(db.String, nullable=True)
 
     # метод представления базы данных при выводе
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Tarif {self.mobile_operator_name}, {self.tarif_name}, {self.price}"

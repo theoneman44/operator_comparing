@@ -16,7 +16,7 @@ git clone https://github.com/theoneman44/operator_comparing
 Создайте виртуальное окружение, необходимое для Вашей системы, и установите зависимости:
 
 ```
-pip install -r requirments.txt
+pip install -r requirements.txt
 ```
 
 Создайте файл config.py и задайте в нем базовые переменные:

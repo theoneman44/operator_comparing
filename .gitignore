@@ -10,4 +10,4 @@ config.py
 readme.txt
 *.db
 trash/
-
+preparing_of_data/

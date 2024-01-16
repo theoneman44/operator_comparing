@@ -13,7 +13,7 @@ class Links(db.Model):
     tarif = relationship("Tarif", back_populates="link", lazy="joined")
 
     # метод представления базы данных при выводе
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Tarif {self.mobile_operator_name}, {self.tarif_name}, {self.page_link}."
 
 
@@ -37,5 +37,5 @@ class Tarif(db.Model):
     link = relationship("Links", back_populates="tarif", lazy="joined")
 
     # метод представления базы данных при выводе
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Tarif {self.mobile_operator_name}, {self.tarif_name}, {self.price}"
