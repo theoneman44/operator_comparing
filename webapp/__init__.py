@@ -1,7 +1,6 @@
 from flask import flash, Flask, render_template, request, send_from_directory
 from flask.wrappers import Response
-from webapp.mobile.models import db as db1
-from webapp.all_in.models import db as db2
+from webapp.mobile.models import db
 from webapp.mobile.queries import queries as queries1
 from webapp.all_in.queries import queries as queries2
 
@@ -9,8 +8,8 @@ from webapp.all_in.queries import queries as queries2
 def create_app() -> str | Flask:
     app = Flask(__name__)
     app.config.from_pyfile('config.py')
-    db1.init_app(app)
-    db2.init_app(app)
+    db.init_app(app)
+    # db2.init_app(app)
 
     @app.route("/")
     def index() -> str:
@@ -20,7 +19,12 @@ def create_app() -> str | Flask:
             tarifs_list = queries1(request_data)
             if len(tarifs_list) == 0:
                 flash('По указанным параметрам не найдено ни одного тарифа. Попробуйте немного изменить значения.')
-            return render_template('mobile/mobile.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list), request_data=request_data)
+            return render_template('mobile/mobile.html',
+                                   title=title,
+                                   tarifs_list=tarifs_list,
+                                   tarifs_list_len=len(tarifs_list),
+                                   request_data=request_data
+                                   )
         else:
             return render_template('mobile/mobile.html', title=title, request_data=request_data)
 
@@ -38,7 +42,11 @@ def create_app() -> str | Flask:
             tarifs_list = queries2(request_data)
             if len(tarifs_list) == 0:
                 flash('По указанным параметрам не найдено ни одного тарифа. Попробуйте немного изменить значения.')
-            return render_template('all_in/all_in.html', title=title, tarifs_list=tarifs_list, tarifs_list_len=len(tarifs_list), request_data=request_data)
+            return render_template('all_in/all_in.html',
+                                   title=title, tarifs_list=tarifs_list,
+                                   tarifs_list_len=len(tarifs_list),
+                                   request_data=request_data
+                                   )
         else:
             return render_template('all_in/all_in.html', title=title, request_data=request_data)
 

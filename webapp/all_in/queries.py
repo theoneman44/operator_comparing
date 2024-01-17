@@ -1,6 +1,6 @@
 from sqlalchemy import between
 from typing import Any
-from webapp.all_in.models import Tarif_3in1
+from webapp.mobile.models import Tarif_3in1
 
 # mobile_operator_name=0&phone_internet_qty=0&phone_minutes_qty=0&internet_speed=0&family_num=0
 
