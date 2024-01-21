@@ -1,5 +1,6 @@
 from sqlalchemy import between
 from typing import Any
+from collections.abc import Sized
 
 from webapp.mobile.models import Tarif
 
@@ -7,7 +8,7 @@ from webapp.mobile.models import Tarif
 # social_offer_price=0&messenger_price=0&music_offer_price=0&video_offer_price=0&stream_offer_price=0
 
 
-def queries(request_result: Any) -> Tarif:
+def queries(request_result: Any) -> Sized:
 
     tarifs_list = Tarif.query.filter(between(Tarif.phone_sms_quantity, int(request_result['phone_sms_quantity']) - 50,
                                              int(request_result['phone_sms_quantity']) + 50

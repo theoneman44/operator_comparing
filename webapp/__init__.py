@@ -5,11 +5,10 @@ from webapp.mobile.queries import queries as queries1
 from webapp.all_in.queries import queries as queries2
 
 
-def create_app() -> str | Flask:
+def create_app() -> Flask:
     app = Flask(__name__)
     app.config.from_pyfile('config.py')
     db.init_app(app)
-    # db2.init_app(app)
 
     @app.route("/")
     def index() -> str:
