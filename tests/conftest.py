@@ -1,4 +1,4 @@
-import os
+# import os
 
 import pytest
 from flask import Flask
@@ -14,7 +14,7 @@ def app() -> Flask:
     })
 
     yield app
-    os.close()
+    # os.close()
 
 
 @pytest.fixture()
