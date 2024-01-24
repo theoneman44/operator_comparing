@@ -1,6 +1,5 @@
 from sqlalchemy import between
 from typing import Any
-from collections.abc import Sized
 
 from webapp.mobile.models import Tarif
 
