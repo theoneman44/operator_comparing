@@ -17,7 +17,7 @@ exceptiongroup==1.2.0
 fastjsonschema==2.19.1
 filelock==3.13.1
 flake8==7.0.0
-Flask==2.2.2
+Flask==2.3
 Flask-SQLAlchemy==2.5.1
 greenlet==3.0.3
 idna==3.6
@@ -65,5 +65,5 @@ trove-classifiers==2023.11.29
 typing_extensions==4.9.0
 urllib3==2.1.0
 virtualenv==20.25.0
-Werkzeug==2.2.2
+Werkzeug==2.3
 zipp==3.17.0
