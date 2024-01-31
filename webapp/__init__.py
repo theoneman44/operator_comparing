@@ -15,7 +15,6 @@ def create_app() -> Flask:
         request_data = request.args
         title = "Сравнение мобильных операторов"
         if request_data:
-            print(f'request_data {request_data}')
             tarifs_list = queries1(request_data)
             if len(tarifs_list) == 0:
                 flash('По указанным параметрам не найдено ни одного тарифа. Попробуйте немного изменить значения.')

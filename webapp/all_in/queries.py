@@ -1,11 +1,10 @@
 from sqlalchemy import between
-from typing import Any
+from werkzeug.datastructures.structures import MultiDict
 from webapp.mobile.models import Tarif_3in1
-
 # mobile_operator_name=0&phone_internet_qty=0&phone_minutes_qty=0&internet_speed=0&family_num=0
 
 
-def queries(request_result: Any) -> Tarif_3in1:
+def queries(request_result: MultiDict) -> Tarif_3in1:
     tarifs_list = Tarif_3in1.query
     tarifs_list = phone_minutes_filter(request_result, tarifs_list)
     tarifs_list = channels_qty_filter(request_result, tarifs_list)
@@ -27,21 +26,21 @@ def queries(request_result: Any) -> Tarif_3in1:
         return tarifs_list
 
 
-def phone_minutes_filter(request_result: Any, tarifs_list: Tarif_3in1) -> Tarif_3in1:
+def phone_minutes_filter(request_result: MultiDict, tarifs_list: Tarif_3in1) -> Tarif_3in1:
     tarifs_list = tarifs_list.filter(between(Tarif_3in1.phone_minutes_qty, int(request_result['phone_minutes_qty']) - 301,
                                      int(request_result['phone_minutes_qty']) + 301)
                                      )
     return tarifs_list
 
 
-def channels_qty_filter(request_result: Any, tarifs_list: Tarif_3in1) -> Tarif_3in1:
+def channels_qty_filter(request_result: MultiDict, tarifs_list: Tarif_3in1) -> Tarif_3in1:
     tarifs_list = tarifs_list.filter(between(Tarif_3in1.channels_qty, int(request_result['channels_qty']) - 101,
                                      int(request_result['channels_qty']) + 101)
                                      )
     return tarifs_list
 
 
-def standart_queries(request_result: Any, tarifs_list: Tarif_3in1) -> Tarif_3in1:
+def standart_queries(request_result: MultiDict, tarifs_list: Tarif_3in1) -> Tarif_3in1:
     tarifs_list = tarifs_list.filter(between(Tarif_3in1.phone_internet_qty, int(request_result['phone_internet_qty']) - 11,
                                      int(request_result['phone_internet_qty']) + 11),
                                      between(Tarif_3in1.internet_speed, int(request_result['internet_speed']) - 301,
