@@ -12,5 +12,7 @@ readme.txt
 trash/
 venv/
 preparing_of_data/
+htmlcov/
 *.xml
 *.iml
+.coverage
