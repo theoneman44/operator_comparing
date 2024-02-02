@@ -8,6 +8,7 @@ input_data.csv
 data/
 config.py
 readme.txt
+*.db
 trash/
 venv/
 preparing_of_data/
