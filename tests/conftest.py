@@ -20,10 +20,11 @@ def app(database_url_env_var) -> Flask:
     })
 
     with app.app_context():
+        db.init_app(app)
         db.create_all()
         yield app
         db.session.remove()
-        # db.drop_all()
+        db.drop_all()
 
 
 @pytest.fixture()
