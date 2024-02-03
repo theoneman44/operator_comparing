@@ -20,7 +20,6 @@ def queries(request_result: MultiDict) -> Tarif:
         tarifs_list = queries_without_sms(request_result)
         return tarifs_list
     else:
-        print(f'Тарифы {tarifs_list}, тип {type(tarifs_list)}')
         return tarifs_list
 
 
