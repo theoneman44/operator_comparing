@@ -12,4 +12,4 @@ RUN python -m pip install -r requirements.txt
 
 COPY . /app
 
-CMD ["chmod +x run.sh", "./run.sh"]
+CMD ["export FLASK_APP=webapp && export FLASK_ENV=development && flask run"]
